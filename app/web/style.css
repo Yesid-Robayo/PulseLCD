@@ -123,7 +123,9 @@ button, input, select { font: inherit; color: inherit; }
 
 .head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 16px; margin-bottom: 20px; }
 .head > div:first-child { flex: 1 1 300px; min-width: 0; }
-.head .row { flex-wrap: wrap; }
+.head .row, .toolbar .row { flex-wrap: wrap; }
+.toolbar { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; margin-bottom: 16px; }
+.toolbar .row + .row { margin-left: auto; }
 .head p { margin-top: 3px; color: var(--muted); }
 .stack { display: flex; flex-direction: column; gap: 14px; }
 .row { display: flex; align-items: center; gap: 10px; }

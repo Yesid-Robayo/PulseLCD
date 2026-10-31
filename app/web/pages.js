@@ -303,19 +303,25 @@ let thumbVersion = 0;
 function themesPage() {
   thumbVersion += 1;
   const grid = h("div.gallery");
-  const actions = h("div.row");
+  const actions = h("div.toolbar");
   const picked = new Map();
   let selecting = false;
   let hidden = [];
   const thumb = (id) => image(`thumb?id=${encodeURIComponent(id)}&v=${thumbVersion}`);
   const paintActions = () => {
-    actions.replaceChildren(...(selecting
-      ? [h("button.btn", { onclick: stopSelecting }, t("cancel")),
-        h("button.btn.danger", { disabled: picked.size === 0, onclick: removePicked }, icon("trash"), t("deleteSelected", { count: picked.size }))]
-      : [hidden.length > 0 && h("button.btn", { onclick: restoreDialog }, icon("undo"), t("restoreThemes", { count: hidden.length })),
+    if (selecting) {
+      actions.replaceChildren(h("div.row",
+        h("button.btn", { onclick: stopSelecting }, t("cancel")),
+        h("button.btn.danger", { disabled: picked.size === 0, onclick: removePicked }, icon("trash"), t("deleteSelected", { count: picked.size }))));
+      return;
+    }
+    actions.replaceChildren(
+      h("div.row",
         h("button.btn", { onclick: startSelecting }, icon("check"), t("select")),
+        hidden.length > 0 && h("button.btn", { onclick: restoreDialog }, icon("undo"), t("restoreThemes", { count: hidden.length }))),
+      h("div.row",
         h("button.btn", { onclick: () => action("open_themes") }, t("folder")),
-        h("button.btn.primary", { onclick: create }, icon("plus"), t("newTheme"))].filter(Boolean)));
+        h("button.btn.primary", { onclick: create }, icon("plus"), t("newTheme"))));
   };
   const startSelecting = () => {
     selecting = true;
@@ -442,7 +448,7 @@ function themesPage() {
   };
   paintActions();
   load();
-  return { element: h("div", head(t("themesTitle"), t("themesSub"), actions), grid) };
+  return { element: h("div", head(t("themesTitle"), t("themesSub")), actions, grid) };
 }
 
 // ---- sensores ----
