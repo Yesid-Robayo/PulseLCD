@@ -29,7 +29,7 @@
 > Si tienes otro tamaño u otro modelo, esta app no es para ti: no la descargues.
 >
 > **Desactiva el Inicio rápido de Windows.** Con él activo, la pantalla puede quedarse en negro al encender el PC. PulseLCD te avisa si
-> está activado y te muestra los pasos. [Por qué importa](#-problemas-frecuentes).
+> está activado y te muestra los pasos. [Por qué importa](#-preguntas-frecuentes).
 
 PulseLCD maneja esas pantallas USB pequeñas que se venden para cajas de PC y escritorios. Muestra tu CPU, GPU, memoria, FPS y más,
 con temas que puedes editar arrastrando cosas. Se escribió desde cero con una obsesión: **estos paneles se portan mal, así que la

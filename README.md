@@ -29,7 +29,7 @@
 > model, this app isn't for you: don't download it.
 >
 > **Turn off Windows Fast Startup.** With it on, the display can stay black when you power on the PC. PulseLCD warns you if it's on
-> and shows you the steps. [Why it matters](#-troubleshooting).
+> and shows you the steps. [Why it matters](#-faq).
 
 PulseLCD drives those small USB screens sold for PC cases and desks. It shows your CPU, GPU, memory, FPS and more, with themes
 you can edit by dragging things around. It was written from scratch with one obsession: **these panels misbehave, so the app
