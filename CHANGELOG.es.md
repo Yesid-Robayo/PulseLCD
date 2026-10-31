@@ -9,7 +9,7 @@ Cuando sale una versión nueva, se añade arriba con el mismo contenido que sus 
 
 ## 0.1.0
 
-Primera versión. Es un proyecto personal en beta, compartido tal cual y **sin garantía**. Es **solo para la Turing Smart Screen de 3,5"** (480×320,
+Primera versión. Es gratis, está en beta y se ofrece tal cual, **sin garantía**. Es **solo para la Turing Smart Screen de 3,5"** (480×320,
 primera revisión); otros tamaños y modelos no funcionan.
 
 ### La pantalla
