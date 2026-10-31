@@ -19,7 +19,7 @@
 
 > [!WARNING]
 > **Gratis y de código abierto, sin garantía.** PulseLCD lo hace una sola persona y se ofrece tal cual: puede que no funcione con tu
-> pantalla. Si algo falla, abre un [*issue*](https://github.com/Yesid-Robayo/PulseLCD/issues) y lo miramos.
+> pantalla. Si tienes algún problema, abre un [*issue*](https://github.com/Yesid-Robayo/PulseLCD/issues) y trato de ayudarte.
 >
 > **Beta.** Se ha probado en una sola pantalla (mira el [estado de las pruebas](#-estado-de-las-pruebas)).
 
