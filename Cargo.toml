@@ -1,0 +1,33 @@
+[workspace]
+resolver = "3"
+members = ["crates/shared", "crates/panel", "crates/render", "crates/sensors", "app", "broker"]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+authors = ["Yesid Robayo"]
+repository = "https://github.com/Yesid-Robayo/PulseLCD"
+
+[workspace.dependencies]
+serde = { version = "1.0.229", features = ["derive"] }
+serde_json = "1.0.154"
+windows-sys = "0.61.2"
+pulse-shared = { path = "crates/shared" }
+pulse-panel = { path = "crates/panel" }
+pulse-render = { path = "crates/render" }
+pulse-sensors = { path = "crates/sensors" }
+
+# Binarios pequeños: optimizados por tamaño, LTO completo, sin símbolos
+[profile.release]
+opt-level = "s"
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
+
+# El dibujo y el dither corren cada segundo: ahí sí compensa optimizar por velocidad
+[profile.release.package.pulse-render]
+opt-level = 3
+[profile.release.package.ab_glyph_rasterizer]
+opt-level = 3

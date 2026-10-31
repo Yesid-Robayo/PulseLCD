@@ -1,0 +1,26 @@
+{
+  "name": "Sakura",
+  "orientation": "landscape",
+  "background": { "kind": "image", "file": "sakura.jpg" },
+  "widgets": [
+    {"x": 8, "y": 8, "w": 166, "h": 304, "type": "panel", "color": "#000000", "opacity": 30, "radius": 12},
+    {"x": 16, "y": 12, "w": 150, "h": 38, "type": "value", "metric": "time", "unit": true, "font": "segoeuib.ttf", "size": 28, "color": "#ffffff", "align": "left"},
+    {"x": 16, "y": 46, "w": 150, "h": 18, "type": "value", "metric": "date", "unit": true, "font": "segoeui.ttf", "size": 12.5, "color": "#ecc4d4", "align": "left"},
+    {"x": 16, "y": 72, "w": 44, "h": 20, "type": "label", "text": "CPU", "font": "segoeuib.ttf", "size": 14, "color": "#ecc4d4", "align": "left"},
+    {"x": 56, "y": 72, "w": 50, "h": 20, "type": "value", "metric": "cpu_usage", "unit": true, "font": "segoeuib.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 106, "y": 72, "w": 60, "h": 20, "type": "value", "metric": "cpu_temp", "unit": true, "font": "segoeui.ttf", "size": 14, "color": "#ecc4d4", "align": "right"},
+    {"x": 16, "y": 95, "w": 150, "h": 8, "type": "bar", "metric": "cpu_usage", "color": "#ff9ec4", "track": "#3a1a3e", "radius": 3},
+    {"x": 16, "y": 122, "w": 44, "h": 20, "type": "label", "text": "GPU", "font": "segoeuib.ttf", "size": 14, "color": "#ecc4d4", "align": "left"},
+    {"x": 56, "y": 122, "w": 50, "h": 20, "type": "value", "metric": "gpu_usage", "unit": true, "font": "segoeuib.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 106, "y": 122, "w": 60, "h": 20, "type": "value", "metric": "gpu_temp", "unit": true, "font": "segoeui.ttf", "size": 14, "color": "#ecc4d4", "align": "right"},
+    {"x": 16, "y": 145, "w": 150, "h": 8, "type": "bar", "metric": "gpu_usage", "color": "#ffcf9e", "track": "#3a1a3e", "radius": 3},
+    {"x": 16, "y": 172, "w": 44, "h": 20, "type": "label", "text": "RAM", "font": "segoeuib.ttf", "size": 14, "color": "#ecc4d4", "align": "left"},
+    {"x": 56, "y": 172, "w": 50, "h": 20, "type": "value", "metric": "ram_percent", "unit": true, "font": "segoeuib.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 106, "y": 172, "w": 60, "h": 20, "type": "value", "metric": "ram_used", "unit": true, "font": "segoeui.ttf", "size": 14, "color": "#ecc4d4", "align": "right"},
+    {"x": 16, "y": 195, "w": 150, "h": 8, "type": "bar", "metric": "ram_percent", "color": "#f4e2e8", "track": "#3a1a3e", "radius": 3},
+    {"x": 16, "y": 230, "w": 84, "h": 46, "type": "value", "metric": "weather_temp", "unit": true, "font": "segoeuib.ttf", "size": 36, "color": "#ffffff", "align": "left"},
+    {"x": 16, "y": 278, "w": 150, "h": 20, "type": "value", "metric": "weather_text", "unit": true, "font": "segoeui.ttf", "size": 13, "color": "#ecc4d4", "align": "left"},
+    {"x": 100, "y": 228, "w": 66, "h": 16, "type": "label", "text": "FPS", "font": "segoeuib.ttf", "size": 12, "color": "#ecc4d4", "align": "right"},
+    {"x": 100, "y": 242, "w": 66, "h": 36, "type": "value", "metric": "fps", "unit": false, "font": "segoeuib.ttf", "size": 28, "color": "#ffffff", "align": "right"}
+  ]
+}

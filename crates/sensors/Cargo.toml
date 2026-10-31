@@ -1,0 +1,14 @@
+[package]
+name = "pulse-sensors"
+description = "Lee las métricas del PC sin privilegios: CPU, GPU, memoria, disco, red, latencia, clima y baterías"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[dependencies]
+pulse-shared.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+windows-sys = { workspace = true, features = ["Win32_Foundation", "Win32_NetworkManagement_IpHelper", "Win32_NetworkManagement_Ndis", "Win32_Networking_WinHttp", "Win32_Networking_WinSock", "Win32_Storage_FileSystem", "Win32_System_LibraryLoader", "Win32_System_SystemInformation", "Win32_System_Threading"] }

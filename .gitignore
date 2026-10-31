@@ -1,0 +1,32 @@
+# Compilación
+/target/
+**/*.rs.bk
+*.pdb
+
+# Datos de ejecución (viven en %APPDATA%\PulseLCD, pero por si se usa PULSELCD_DATA_DIR dentro del repo)
+*.log
+config.json
+PulseLCDData/
+
+# Herramientas que se descargan al publicar, nunca se guardan en el repo
+/tools/
+
+# Nunca subir claves, certificados ni secretos
+*.pem
+*.key
+*.cer
+*.crt
+*.pfx
+*.p12
+.env
+
+# Editores y sistema
+.vs/
+.idea/
+.vscode/
+*.user
+Thumbs.db
+Desktop.ini
+
+# Worktrees y datos locales de los agentes
+.claude/

@@ -1,0 +1,40 @@
+name: Error / Bug
+description: Algo no funciona como debería / Something doesn't work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por avisar. Si es un problema de seguridad, **no** lo pongas aquí: mira SECURITY.md.
+        Thanks for reporting. Security problems go through SECURITY.md, not here.
+  - type: input
+    id: version
+    attributes:
+      label: Versión de PulseLCD / PulseLCD version
+      description: Sale en Ajustes › Acerca de. / Shown in Settings › About.
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: windows
+    attributes:
+      label: Versión de Windows / Windows version
+      placeholder: "Windows 11 24H2"
+  - type: input
+    id: panel
+    attributes:
+      label: Pantalla / Display
+      description: Marca, tamaño y dónde la compraste. / Brand, size and where you bought it.
+  - type: textarea
+    id: what
+    attributes:
+      label: Qué pasó / What happened
+      description: Qué esperabas, qué viste y cómo repetirlo. Una foto de la pantalla ayuda mucho. / What you expected, what you saw and how to repeat it. A photo of the display helps a lot.
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Registro / Log
+      description: Las últimas líneas de `%APPDATA%\PulseLCD\pulselcd.log`. / The last lines of `%APPDATA%\PulseLCD\pulselcd.log`.
+      render: text

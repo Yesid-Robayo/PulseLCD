@@ -1,0 +1,12 @@
+[package]
+name = "pulse-panel"
+description = "Habla con el panel de PulseLCD y lo mantiene sano: protocolo, puerto serie y guardián"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[dependencies]
+pulse-shared.workspace = true
+windows-sys = { workspace = true, features = ["Win32_Foundation", "Win32_Devices_Communication", "Win32_Devices_DeviceAndDriverInstallation", "Win32_Security", "Win32_Storage_FileSystem", "Win32_System_IO", "Win32_System_Registry"] }

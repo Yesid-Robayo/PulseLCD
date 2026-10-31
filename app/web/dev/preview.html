@@ -1,0 +1,31 @@
+<!doctype html>
+<!-- Solo para desarrollo: la interfaz real con datos inventados, para revisarla sin abrir ventanas. No va en el exe. -->
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <title>PulseLCD</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <aside id="rail"></aside>
+  <main id="page"></main>
+  <div id="overlay"></div>
+  <div id="toast" role="status"></div>
+  <script src="mock.js"></script>
+  <script type="module" src="../app.js"></script>
+  <script type="module">
+    import { openEditor } from "../editor.js";
+    import { helperDialog } from "../pages.js";
+    const params = new URLSearchParams(location.search);
+    if (params.get("helper-dialog")) setTimeout(() => helperDialog(params.get("helper-dialog") === "remove"), 900);
+    if (params.get("editor")) {
+      setTimeout(async () => {
+        await openEditor("mi-tema");
+        const pick = params.get("select");
+        if (pick !== null) document.querySelectorAll(".canvas .box")[+pick]?.dispatchEvent(new PointerEvent("pointerdown", { bubbles: true }));
+        window.dispatchEvent(new PointerEvent("pointerup"));
+      }, 900);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "Signal",
+  "orientation": "landscape",
+  "background": { "kind": "color", "color": "#08090c" },
+  "widgets": [
+    { "x": 24, "y": 18, "w": 432, "h": 96, "type": "value", "metric": "time", "font": "segoeuil.ttf", "size": 84, "color": "#f4f6f8", "align": "center" },
+    { "x": 24, "y": 118, "w": 432, "h": 24, "type": "value", "metric": "date", "font": "segoeuisl.ttf", "size": 17, "color": "#7a8491", "align": "center" },
+
+    { "x": 32, "y": 170, "w": 80, "h": 18, "type": "label", "text": "CPU", "font": "seguisb.ttf", "size": 13, "color": "#7a8491", "align": "left" },
+    { "x": 108, "y": 165, "w": 90, "h": 26, "type": "value", "metric": "cpu_temp", "font": "segoeuib.ttf", "size": 19, "color": "#f4f6f8", "align": "right" },
+    { "x": 32, "y": 196, "w": 166, "h": 6, "type": "bar", "metric": "cpu_usage", "color": "#ff5a5f", "track": "#1c1f26", "radius": 3 },
+
+    { "x": 282, "y": 170, "w": 80, "h": 18, "type": "label", "text": "GPU", "font": "seguisb.ttf", "size": 13, "color": "#7a8491", "align": "left" },
+    { "x": 358, "y": 165, "w": 90, "h": 26, "type": "value", "metric": "gpu_temp", "font": "segoeuib.ttf", "size": 19, "color": "#f4f6f8", "align": "right" },
+    { "x": 282, "y": 196, "w": 166, "h": 6, "type": "bar", "metric": "gpu_usage", "color": "#ff5a5f", "track": "#1c1f26", "radius": 3 },
+
+    { "x": 32, "y": 226, "w": 80, "h": 18, "type": "label", "text": "RAM", "font": "seguisb.ttf", "size": 13, "color": "#7a8491", "align": "left" },
+    { "x": 108, "y": 221, "w": 90, "h": 26, "type": "value", "metric": "ram_used", "font": "segoeuib.ttf", "size": 19, "color": "#f4f6f8", "align": "right" },
+    { "x": 32, "y": 252, "w": 166, "h": 6, "type": "bar", "metric": "ram_percent", "color": "#ffffff", "track": "#1c1f26", "radius": 3 },
+
+    { "x": 282, "y": 226, "w": 80, "h": 18, "type": "label", "text": "C:", "font": "seguisb.ttf", "size": 13, "color": "#7a8491", "align": "left" },
+    { "x": 358, "y": 221, "w": 90, "h": 26, "type": "value", "metric": "disk_free", "font": "segoeuib.ttf", "size": 19, "color": "#f4f6f8", "align": "right" },
+    { "x": 282, "y": 252, "w": 166, "h": 6, "type": "bar", "metric": "disk_percent", "color": "#ffffff", "track": "#1c1f26", "radius": 3 },
+
+    { "x": 32, "y": 278, "w": 200, "h": 22, "type": "value", "metric": "net_down", "font": "segoeui.ttf", "size": 14, "color": "#7a8491", "align": "left" },
+    { "x": 248, "y": 278, "w": 200, "h": 22, "type": "value", "metric": "uptime", "font": "segoeui.ttf", "size": 14, "color": "#7a8491", "align": "right" }
+  ]
+}

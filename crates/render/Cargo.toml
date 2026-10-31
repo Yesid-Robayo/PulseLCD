@@ -1,0 +1,15 @@
+[package]
+name = "pulse-render"
+description = "Dibuja los temas de PulseLCD: una función de datos a imagen, la misma para el panel y la vista previa"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+authors.workspace = true
+repository.workspace = true
+
+[dependencies]
+pulse-shared.workspace = true
+pulse-panel.workspace = true
+serde_json.workspace = true
+ab_glyph = "0.2"
+image = { version = "0.25.10", default-features = false, features = ["png", "jpeg"] }

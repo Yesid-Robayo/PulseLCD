@@ -1,0 +1,32 @@
+{
+  "name": "Digital Rain",
+  "orientation": "landscape",
+  "background": { "kind": "image", "file": "rain.jpg" },
+  "widgets": [
+    {"x": 8, "y": 8, "w": 216, "h": 304, "type": "panel", "color": "#000000", "opacity": 80, "radius": 12},
+    {"x": 16, "y": 12, "w": 200, "h": 36, "type": "value", "metric": "time", "unit": true, "font": "consolab.ttf", "size": 26, "color": "#ffffff", "align": "left"},
+    {"x": 16, "y": 42, "w": 200, "h": 18, "type": "value", "metric": "date", "unit": true, "font": "consola.ttf", "size": 12.5, "color": "#8fdca0", "align": "left"},
+    {"x": 16, "y": 66, "w": 50, "h": 20, "type": "label", "text": "CPU", "font": "consolab.ttf", "size": 14, "color": "#3cff7a", "align": "left"},
+    {"x": 66, "y": 66, "w": 60, "h": 20, "type": "value", "metric": "cpu_usage", "unit": true, "font": "consolab.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 130, "y": 66, "w": 86, "h": 20, "type": "value", "metric": "cpu_temp", "unit": true, "font": "consola.ttf", "size": 14, "color": "#8fdca0", "align": "right"},
+    {"x": 16, "y": 89, "w": 50, "h": 20, "type": "label", "text": "GPU", "font": "consolab.ttf", "size": 14, "color": "#3cff7a", "align": "left"},
+    {"x": 66, "y": 89, "w": 60, "h": 20, "type": "value", "metric": "gpu_usage", "unit": true, "font": "consolab.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 130, "y": 89, "w": 86, "h": 20, "type": "value", "metric": "gpu_temp", "unit": true, "font": "consola.ttf", "size": 14, "color": "#8fdca0", "align": "right"},
+    {"x": 16, "y": 112, "w": 50, "h": 20, "type": "label", "text": "RAM", "font": "consolab.ttf", "size": 14, "color": "#3cff7a", "align": "left"},
+    {"x": 66, "y": 112, "w": 60, "h": 20, "type": "value", "metric": "ram_percent", "unit": true, "font": "consolab.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 130, "y": 112, "w": 86, "h": 20, "type": "value", "metric": "ram_used", "unit": true, "font": "consola.ttf", "size": 14, "color": "#8fdca0", "align": "right"},
+    {"x": 16, "y": 135, "w": 50, "h": 20, "type": "label", "text": "DISK", "font": "consolab.ttf", "size": 14, "color": "#3cff7a", "align": "left"},
+    {"x": 66, "y": 135, "w": 60, "h": 20, "type": "value", "metric": "disk_percent", "unit": true, "font": "consolab.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 130, "y": 135, "w": 86, "h": 20, "type": "value", "metric": "disk_free", "unit": true, "font": "consola.ttf", "size": 14, "color": "#8fdca0", "align": "right"},
+    {"x": 16, "y": 164, "w": 50, "h": 20, "type": "label", "text": "DOWN", "font": "consolab.ttf", "size": 14, "color": "#3cff7a", "align": "left"},
+    {"x": 76, "y": 164, "w": 140, "h": 20, "type": "value", "metric": "net_down", "unit": true, "font": "consola.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 16, "y": 187, "w": 50, "h": 20, "type": "label", "text": "UP", "font": "consolab.ttf", "size": 14, "color": "#3cff7a", "align": "left"},
+    {"x": 76, "y": 187, "w": 140, "h": 20, "type": "value", "metric": "net_up", "unit": true, "font": "consola.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 16, "y": 210, "w": 50, "h": 20, "type": "label", "text": "PING", "font": "consolab.ttf", "size": 14, "color": "#3cff7a", "align": "left"},
+    {"x": 76, "y": 210, "w": 140, "h": 20, "type": "value", "metric": "ping", "unit": true, "font": "consola.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 16, "y": 233, "w": 50, "h": 20, "type": "label", "text": "ON", "font": "consolab.ttf", "size": 14, "color": "#3cff7a", "align": "left"},
+    {"x": 76, "y": 233, "w": 140, "h": 20, "type": "value", "metric": "uptime", "unit": true, "font": "consola.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 16, "y": 270, "w": 60, "h": 20, "type": "label", "text": "FPS", "font": "consolab.ttf", "size": 14, "color": "#3cff7a", "align": "left"},
+    {"x": 76, "y": 254, "w": 140, "h": 54, "type": "value", "metric": "fps", "unit": false, "font": "consolab.ttf", "size": 40, "color": "#ffffff", "align": "right"}
+  ]
+}

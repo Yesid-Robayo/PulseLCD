@@ -1,0 +1,87 @@
+# Al empujar una etiqueta vX.Y.Z: compila en GitHub, añade las herramientas de terceros comprobando su hash, publica el
+# SHA256 y una atestación de origen (prueba verificable de que los archivos salieron de este código y de este workflow).
+# La release queda como borrador para revisarla.
+name: Release
+
+on:
+  push:
+    tags: ["v*.*.*"]
+
+permissions:
+  contents: read
+
+env:
+  PRESENTMON_TAG: v2.6.0
+  PRESENTMON_FILE: PresentMon-2.6.0-x64.exe
+  PRESENTMON_SHA256: b2a706bc6ad475749e3b7e3409263aa1e6906d45bdcf993f6dbc0f660188f1af
+  MODULES_TAG: "0.2.11"
+  MODULES_FILE: release_0_2_11.zip
+  MODULES_SHA256: 43608cb89bc84247fef1368a139013f7d043e17db6d6c8dfc9b46bf0905a81f4
+
+jobs:
+  release:
+    runs-on: windows-latest
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Rust estable
+        run: |
+          rustup toolchain install stable --profile minimal
+          rustup default stable
+      - name: Pruebas
+        run: cargo test --locked
+      - name: Compilar
+        run: cargo build --release --locked -p pulselcd -p pulselcd-sensors
+      - name: Herramientas de terceros
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          New-Item -ItemType Directory tools | Out-Null
+          gh release download $env:PRESENTMON_TAG --repo GameTechDev/PresentMon --pattern $env:PRESENTMON_FILE --dir tools
+          gh release download $env:MODULES_TAG --repo namazso/PawnIO.Modules --pattern $env:MODULES_FILE --dir tools
+          function Check($file, $expected) {
+            $actual = (Get-FileHash $file -Algorithm SHA256).Hash.ToLower()
+            if ($actual -ne $expected) { throw "$file no coincide: $actual" }
+          }
+          Check "tools\$env:PRESENTMON_FILE" $env:PRESENTMON_SHA256
+          Check "tools\$env:MODULES_FILE" $env:MODULES_SHA256
+          Expand-Archive "tools\$env:MODULES_FILE" tools\modules
+      - name: Preparar archivos
+        shell: pwsh
+        env:
+          TAG: ${{ github.ref_name }}
+        run: |
+          $version = $env:TAG.TrimStart('v')
+          New-Item -ItemType Directory package, dist | Out-Null
+          Copy-Item target\release\PulseLCD.exe, target\release\PulseLCD-Sensors.exe, LICENSE, THIRD_PARTY_NOTICES.txt, third_party\RyzenSMU.LICENSE.txt package\
+          Copy-Item "tools\$env:PRESENTMON_FILE" package\PresentMon-x64.exe
+          Get-ChildItem tools\modules -Recurse -Filter RyzenSMU.bin | Select-Object -First 1 | Copy-Item -Destination package\
+          if (-not (Test-Path package\RyzenSMU.bin)) { throw "falta RyzenSMU.bin" }
+          $zip = "dist\PulseLCD-$version.zip"
+          Compress-Archive package\* $zip
+          $h = (Get-FileHash $zip -Algorithm SHA256).Hash.ToLower()
+          [IO.File]::WriteAllText("$PWD\dist\SHA256SUMS.txt", "$h  PulseLCD-$version.zip`n")
+      - name: Atestación de origen
+        uses: actions/attest-build-provenance@e8998f949152b193b063cb0ec769d69d929409be # v2
+        with:
+          subject-path: dist/*.zip
+      - name: Crear la release (borrador)
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ github.ref_name }}
+        run: |
+          $version = [regex]::Escape($env:TAG.TrimStart('v'))
+          function Notes($file) {
+            $text = (Get-Content $file -Raw -Encoding utf8) -replace "`r", ''
+            if ($text -notmatch "(?ms)^## $version\b[^\n]*\n(.*?)(?=^## |\z)") { throw "$file no tiene $env:TAG" }
+            $Matches[1].Trim()
+          }
+          "## English`n`n$(Notes CHANGELOG.md)`n`n## Español`n`n$(Notes CHANGELOG.es.md)" | Out-File dist\notes.md -Encoding utf8
+          gh release create $env:TAG (Get-ChildItem dist\*.zip).FullName dist\SHA256SUMS.txt --repo $env:GITHUB_REPOSITORY --draft --title "PulseLCD $env:TAG" --notes-file dist\notes.md

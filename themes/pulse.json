@@ -1,0 +1,37 @@
+{
+  "name": "Pulse",
+  "orientation": "landscape",
+  "background": { "kind": "gradient", "from": "#071018", "to": "#0d2a33", "angle": 55 },
+  "widgets": [
+    { "x": 18, "y": 10, "w": 230, "h": 50, "type": "value", "metric": "time", "font": "segoeuib.ttf", "size": 40, "color": "#ffffff", "align": "left" },
+    { "x": 262, "y": 16, "w": 200, "h": 20, "type": "value", "metric": "weekday", "font": "segoeuisl.ttf", "size": 15, "color": "#9fd8d0", "align": "right" },
+    { "x": 262, "y": 36, "w": 200, "h": 20, "type": "value", "metric": "date", "font": "segoeuisl.ttf", "size": 15, "color": "#7fa8a8", "align": "right" },
+
+    { "x": 14, "y": 68, "w": 148, "h": 152, "type": "panel", "color": "#ffffff", "opacity": 5, "radius": 14 },
+    { "x": 28, "y": 76, "w": 120, "h": 120, "type": "ring", "metric": "cpu_usage", "color": "#2ee6b6", "track": "#16323a", "thickness": 11, "start": 225, "sweep": 270 },
+    { "x": 28, "y": 108, "w": 120, "h": 36, "type": "value", "metric": "cpu_usage", "unit": true, "font": "segoeuib.ttf", "size": 28, "color": "#ffffff", "align": "center" },
+    { "x": 28, "y": 142, "w": 120, "h": 20, "type": "value", "metric": "cpu_temp", "font": "segoeui.ttf", "size": 15, "color": "#9fd8d0", "align": "center" },
+    { "x": 28, "y": 192, "w": 120, "h": 22, "type": "label", "text": "CPU", "font": "seguisb.ttf", "size": 15, "color": "#7fa8a8", "align": "center" },
+
+    { "x": 170, "y": 68, "w": 148, "h": 152, "type": "panel", "color": "#ffffff", "opacity": 5, "radius": 14 },
+    { "x": 184, "y": 76, "w": 120, "h": 120, "type": "ring", "metric": "gpu_usage", "color": "#39c5ff", "track": "#16323a", "thickness": 11, "start": 225, "sweep": 270 },
+    { "x": 184, "y": 108, "w": 120, "h": 36, "type": "value", "metric": "gpu_usage", "unit": true, "font": "segoeuib.ttf", "size": 28, "color": "#ffffff", "align": "center" },
+    { "x": 184, "y": 142, "w": 120, "h": 20, "type": "value", "metric": "gpu_temp", "font": "segoeui.ttf", "size": 15, "color": "#9fd8d0", "align": "center" },
+    { "x": 184, "y": 192, "w": 120, "h": 22, "type": "label", "text": "GPU", "font": "seguisb.ttf", "size": 15, "color": "#7fa8a8", "align": "center" },
+
+    { "x": 326, "y": 68, "w": 140, "h": 72, "type": "panel", "color": "#ffffff", "opacity": 5, "radius": 14 },
+    { "x": 338, "y": 74, "w": 116, "h": 20, "type": "label", "text": "RAM", "font": "seguisb.ttf", "size": 14, "color": "#7fa8a8", "align": "left" },
+    { "x": 338, "y": 74, "w": 116, "h": 20, "type": "value", "metric": "ram_used", "font": "segoeuib.ttf", "size": 15, "color": "#ffffff", "align": "right" },
+    { "x": 338, "y": 100, "w": 116, "h": 10, "type": "bar", "metric": "ram_percent", "color": "#ffc857", "track": "#16323a", "radius": 5 },
+    { "x": 338, "y": 116, "w": 116, "h": 18, "type": "value", "metric": "ram_percent", "font": "segoeui.ttf", "size": 13, "color": "#9fd8d0", "align": "right" },
+
+    { "x": 326, "y": 148, "w": 140, "h": 72, "type": "panel", "color": "#ffffff", "opacity": 5, "radius": 14 },
+    { "x": 338, "y": 154, "w": 116, "h": 20, "type": "label", "text": "FPS", "font": "seguisb.ttf", "size": 14, "color": "#7fa8a8", "align": "left" },
+    { "x": 338, "y": 172, "w": 116, "h": 44, "type": "value", "metric": "fps", "unit": false, "font": "segoeuib.ttf", "size": 36, "color": "#ffffff", "align": "right" },
+
+    { "x": 14, "y": 228, "w": 452, "h": 80, "type": "panel", "color": "#ffffff", "opacity": 5, "radius": 14 },
+    { "x": 26, "y": 234, "w": 200, "h": 18, "type": "label", "text": "CPU", "font": "seguisb.ttf", "size": 11, "color": "#7fa8a8", "align": "left" },
+    { "x": 240, "y": 234, "w": 216, "h": 18, "type": "value", "metric": "net_down", "font": "segoeui.ttf", "size": 12, "color": "#9fd8d0", "align": "right" },
+    { "x": 24, "y": 254, "w": 432, "h": 48, "type": "graph", "metric": "cpu_usage", "color": "#2ee6b6", "history": 90, "fill": true }
+  ]
+}

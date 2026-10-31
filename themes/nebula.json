@@ -1,0 +1,29 @@
+{
+  "name": "Nebula",
+  "orientation": "landscape",
+  "background": { "kind": "image", "file": "nebula.jpg" },
+  "widgets": [
+    {"x": 8, "y": 8, "w": 184, "h": 66, "type": "panel", "color": "#000000", "opacity": 36, "radius": 12},
+    {"x": 18, "y": 10, "w": 170, "h": 40, "type": "value", "metric": "time", "unit": true, "font": "bahnschrift.ttf", "size": 30, "color": "#ffffff", "align": "left"},
+    {"x": 18, "y": 48, "w": 170, "h": 18, "type": "value", "metric": "date", "unit": true, "font": "bahnschrift.ttf", "size": 12.5, "color": "#d0b8e0", "align": "left"},
+    {"x": 8, "y": 218, "w": 464, "h": 94, "type": "panel", "color": "#000000", "opacity": 50, "radius": 14},
+    {"x": 21, "y": 224, "w": 72, "h": 72, "type": "ring", "metric": "cpu_usage", "color": "#ff5fb0", "track": "#2a1438", "thickness": 7, "start": 225, "sweep": 270},
+    {"x": 20, "y": 252, "w": 74, "h": 26, "type": "value", "metric": "cpu_usage", "unit": true, "font": "bahnschrift.ttf", "size": 16, "color": "#ffffff", "align": "center"},
+    {"x": 20, "y": 274, "w": 74, "h": 16, "type": "label", "text": "CPU", "font": "bahnschrift.ttf", "size": 11.5, "color": "#d0b8e0", "align": "center"},
+    {"x": 18, "y": 292, "w": 78, "h": 18, "type": "value", "metric": "cpu_temp", "unit": true, "font": "bahnschrift.ttf", "size": 12, "color": "#d0b8e0", "align": "center"},
+    {"x": 107, "y": 224, "w": 72, "h": 72, "type": "ring", "metric": "gpu_usage", "color": "#5fe8e8", "track": "#2a1438", "thickness": 7, "start": 225, "sweep": 270},
+    {"x": 106, "y": 252, "w": 74, "h": 26, "type": "value", "metric": "gpu_usage", "unit": true, "font": "bahnschrift.ttf", "size": 16, "color": "#ffffff", "align": "center"},
+    {"x": 106, "y": 274, "w": 74, "h": 16, "type": "label", "text": "GPU", "font": "bahnschrift.ttf", "size": 11.5, "color": "#d0b8e0", "align": "center"},
+    {"x": 104, "y": 292, "w": 78, "h": 18, "type": "value", "metric": "gpu_temp", "unit": true, "font": "bahnschrift.ttf", "size": 12, "color": "#d0b8e0", "align": "center"},
+    {"x": 193, "y": 224, "w": 72, "h": 72, "type": "ring", "metric": "ram_percent", "color": "#b08aff", "track": "#2a1438", "thickness": 7, "start": 225, "sweep": 270},
+    {"x": 192, "y": 252, "w": 74, "h": 26, "type": "value", "metric": "ram_percent", "unit": true, "font": "bahnschrift.ttf", "size": 16, "color": "#ffffff", "align": "center"},
+    {"x": 192, "y": 274, "w": 74, "h": 16, "type": "label", "text": "RAM", "font": "bahnschrift.ttf", "size": 11.5, "color": "#d0b8e0", "align": "center"},
+    {"x": 190, "y": 292, "w": 78, "h": 18, "type": "value", "metric": "ram_used", "unit": true, "font": "bahnschrift.ttf", "size": 12, "color": "#d0b8e0", "align": "center"},
+    {"x": 279, "y": 224, "w": 72, "h": 72, "type": "ring", "metric": "disk_percent", "color": "#ffb87a", "track": "#2a1438", "thickness": 7, "start": 225, "sweep": 270},
+    {"x": 278, "y": 252, "w": 74, "h": 26, "type": "value", "metric": "disk_percent", "unit": true, "font": "bahnschrift.ttf", "size": 16, "color": "#ffffff", "align": "center"},
+    {"x": 278, "y": 274, "w": 74, "h": 16, "type": "label", "text": "DISK", "font": "bahnschrift.ttf", "size": 11.5, "color": "#d0b8e0", "align": "center"},
+    {"x": 276, "y": 292, "w": 78, "h": 18, "type": "value", "metric": "disk_free", "unit": true, "font": "bahnschrift.ttf", "size": 12, "color": "#d0b8e0", "align": "center"},
+    {"x": 366, "y": 224, "w": 94, "h": 18, "type": "label", "text": "FPS", "font": "bahnschrift.ttf", "size": 13, "color": "#d0b8e0", "align": "right"},
+    {"x": 362, "y": 240, "w": 98, "h": 62, "type": "value", "metric": "fps", "unit": false, "font": "bahnschrift.ttf", "size": 40, "color": "#ffffff", "align": "right"}
+  ]
+}

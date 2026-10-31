@@ -1,0 +1,34 @@
+name: Informe de panel / Panel report
+description: Cuenta si tu pantalla funciona o no / Tell whether your display works or not
+labels: [panel]
+body:
+  - type: input
+    id: panel
+    attributes:
+      label: Pantalla / Display
+      description: Marca, tamaño y dónde la compraste. / Brand, size and where you bought it.
+    validations:
+      required: true
+  - type: input
+    id: usb
+    attributes:
+      label: Identidad USB / USB identity
+      description: En el Administrador de dispositivos › Puertos › Propiedades › Detalles › Id. de hardware. / In Device Manager › Ports › Properties › Details › Hardware Ids.
+      placeholder: "USB\\VID_1A86&PID_5722"
+    validations:
+      required: true
+  - type: dropdown
+    id: result
+    attributes:
+      label: Resultado / Result
+      options:
+        - Funciona / Works
+        - Funciona con problemas / Works with problems
+        - No funciona / Doesn't work
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Detalles / Details
+      description: Qué se ve, y una foto si puedes. / What it shows, and a photo if you can.

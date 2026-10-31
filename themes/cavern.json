@@ -1,0 +1,28 @@
+{
+  "name": "Cavern",
+  "orientation": "landscape",
+  "background": { "kind": "image", "file": "cavern.jpg" },
+  "widgets": [
+    {"x": 8, "y": 8, "w": 166, "h": 304, "type": "panel", "color": "#000000", "opacity": 46, "radius": 12},
+    {"x": 16, "y": 12, "w": 150, "h": 38, "type": "value", "metric": "time", "unit": true, "font": "segoeuib.ttf", "size": 28, "color": "#ffffff", "align": "left"},
+    {"x": 16, "y": 46, "w": 150, "h": 18, "type": "value", "metric": "date", "unit": true, "font": "segoeui.ttf", "size": 12.5, "color": "#9cc4cc", "align": "left"},
+    {"x": 16, "y": 72, "w": 44, "h": 20, "type": "label", "text": "CPU", "font": "segoeuib.ttf", "size": 14, "color": "#9cc4cc", "align": "left"},
+    {"x": 56, "y": 72, "w": 50, "h": 20, "type": "value", "metric": "cpu_usage", "unit": true, "font": "segoeuib.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 106, "y": 72, "w": 60, "h": 20, "type": "value", "metric": "cpu_temp", "unit": true, "font": "segoeui.ttf", "size": 14, "color": "#9cc4cc", "align": "right"},
+    {"x": 16, "y": 95, "w": 150, "h": 8, "type": "bar", "metric": "cpu_usage", "color": "#5fe8e0", "track": "#10242c", "radius": 3},
+    {"x": 16, "y": 112, "w": 44, "h": 20, "type": "label", "text": "GPU", "font": "segoeuib.ttf", "size": 14, "color": "#9cc4cc", "align": "left"},
+    {"x": 56, "y": 112, "w": 50, "h": 20, "type": "value", "metric": "gpu_usage", "unit": true, "font": "segoeuib.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 106, "y": 112, "w": 60, "h": 20, "type": "value", "metric": "gpu_temp", "unit": true, "font": "segoeui.ttf", "size": 14, "color": "#9cc4cc", "align": "right"},
+    {"x": 16, "y": 135, "w": 150, "h": 8, "type": "bar", "metric": "gpu_usage", "color": "#ffd98a", "track": "#10242c", "radius": 3},
+    {"x": 16, "y": 152, "w": 44, "h": 20, "type": "label", "text": "RAM", "font": "segoeuib.ttf", "size": 14, "color": "#9cc4cc", "align": "left"},
+    {"x": 56, "y": 152, "w": 50, "h": 20, "type": "value", "metric": "ram_percent", "unit": true, "font": "segoeuib.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 106, "y": 152, "w": 60, "h": 20, "type": "value", "metric": "ram_used", "unit": true, "font": "segoeui.ttf", "size": 14, "color": "#9cc4cc", "align": "right"},
+    {"x": 16, "y": 175, "w": 150, "h": 8, "type": "bar", "metric": "ram_percent", "color": "#8fb8e8", "track": "#10242c", "radius": 3},
+    {"x": 16, "y": 192, "w": 44, "h": 20, "type": "label", "text": "DISK", "font": "segoeuib.ttf", "size": 14, "color": "#9cc4cc", "align": "left"},
+    {"x": 56, "y": 192, "w": 50, "h": 20, "type": "value", "metric": "disk_percent", "unit": true, "font": "segoeuib.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 106, "y": 192, "w": 60, "h": 20, "type": "value", "metric": "disk_free", "unit": true, "font": "segoeui.ttf", "size": 14, "color": "#9cc4cc", "align": "right"},
+    {"x": 16, "y": 215, "w": 150, "h": 8, "type": "bar", "metric": "disk_percent", "color": "#b8d8d8", "track": "#10242c", "radius": 3},
+    {"x": 16, "y": 228, "w": 60, "h": 20, "type": "label", "text": "FPS", "font": "segoeuib.ttf", "size": 14, "color": "#9cc4cc", "align": "left"},
+    {"x": 16, "y": 242, "w": 150, "h": 64, "type": "value", "metric": "fps", "unit": false, "font": "segoeuib.ttf", "size": 48, "color": "#ffffff", "align": "right"}
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "name": "Aurora",
+  "orientation": "landscape",
+  "background": { "kind": "image", "file": "aurora.jpg" },
+  "widgets": [
+    {"x": 18, "y": 10, "w": 170, "h": 40, "type": "value", "metric": "time", "unit": true, "font": "segoeuib.ttf", "size": 30, "color": "#ffffff", "align": "left"},
+    {"x": 18, "y": 48, "w": 170, "h": 18, "type": "value", "metric": "date", "unit": true, "font": "segoeui.ttf", "size": 12.5, "color": "#a8d0c8", "align": "left"},
+    {"x": 8, "y": 218, "w": 464, "h": 94, "type": "panel", "color": "#000000", "opacity": 44, "radius": 14},
+    {"x": 30, "y": 224, "w": 82, "h": 82, "type": "ring", "metric": "cpu_usage", "color": "#5fe8a8", "track": "#10282c", "thickness": 8, "start": 225, "sweep": 270},
+    {"x": 20, "y": 257, "w": 102, "h": 26, "type": "value", "metric": "cpu_usage", "unit": true, "font": "segoeuib.ttf", "size": 19, "color": "#ffffff", "align": "center"},
+    {"x": 20, "y": 279, "w": 102, "h": 16, "type": "label", "text": "CPU", "font": "segoeuib.ttf", "size": 11.5, "color": "#a8d0c8", "align": "center"},
+    {"x": 18, "y": 292, "w": 106, "h": 18, "type": "value", "metric": "cpu_temp", "unit": true, "font": "segoeui.ttf", "size": 12, "color": "#a8d0c8", "align": "center"},
+    {"x": 144, "y": 224, "w": 82, "h": 82, "type": "ring", "metric": "gpu_usage", "color": "#a97fff", "track": "#10282c", "thickness": 8, "start": 225, "sweep": 270},
+    {"x": 134, "y": 257, "w": 102, "h": 26, "type": "value", "metric": "gpu_usage", "unit": true, "font": "segoeuib.ttf", "size": 19, "color": "#ffffff", "align": "center"},
+    {"x": 134, "y": 279, "w": 102, "h": 16, "type": "label", "text": "GPU", "font": "segoeuib.ttf", "size": 11.5, "color": "#a8d0c8", "align": "center"},
+    {"x": 132, "y": 292, "w": 106, "h": 18, "type": "value", "metric": "gpu_temp", "unit": true, "font": "segoeui.ttf", "size": 12, "color": "#a8d0c8", "align": "center"},
+    {"x": 258, "y": 224, "w": 82, "h": 82, "type": "ring", "metric": "ram_percent", "color": "#7fd8ff", "track": "#10282c", "thickness": 8, "start": 225, "sweep": 270},
+    {"x": 248, "y": 257, "w": 102, "h": 26, "type": "value", "metric": "ram_percent", "unit": true, "font": "segoeuib.ttf", "size": 19, "color": "#ffffff", "align": "center"},
+    {"x": 248, "y": 279, "w": 102, "h": 16, "type": "label", "text": "RAM", "font": "segoeuib.ttf", "size": 11.5, "color": "#a8d0c8", "align": "center"},
+    {"x": 246, "y": 292, "w": 106, "h": 18, "type": "value", "metric": "ram_used", "unit": true, "font": "segoeui.ttf", "size": 12, "color": "#a8d0c8", "align": "center"},
+    {"x": 366, "y": 224, "w": 94, "h": 18, "type": "label", "text": "FPS", "font": "segoeuib.ttf", "size": 13, "color": "#a8d0c8", "align": "right"},
+    {"x": 362, "y": 240, "w": 98, "h": 62, "type": "value", "metric": "fps", "unit": false, "font": "segoeuib.ttf", "size": 44, "color": "#ffffff", "align": "right"},
+    {"x": 322, "y": 8, "w": 150, "h": 76, "type": "panel", "color": "#000000", "opacity": 38, "radius": 12},
+    {"x": 334, "y": 11, "w": 76, "h": 46, "type": "value", "metric": "weather_temp", "unit": true, "font": "segoeuib.ttf", "size": 36, "color": "#ffffff", "align": "left"},
+    {"x": 398, "y": 19, "w": 64, "h": 18, "type": "value", "metric": "weather_humidity", "unit": true, "font": "segoeui.ttf", "size": 13, "color": "#a8d0c8", "align": "right"},
+    {"x": 398, "y": 37, "w": 64, "h": 18, "type": "value", "metric": "weather_feels", "unit": true, "font": "segoeui.ttf", "size": 13, "color": "#a8d0c8", "align": "right"},
+    {"x": 334, "y": 59, "w": 128, "h": 20, "type": "value", "metric": "weather_text", "unit": true, "font": "segoeui.ttf", "size": 13, "color": "#a8d0c8", "align": "left"}
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "Mars",
+  "orientation": "landscape",
+  "background": { "kind": "image", "file": "mars.jpg" },
+  "widgets": [
+    {"x": 316, "y": 12, "w": 150, "h": 38, "type": "value", "metric": "time", "unit": true, "font": "bahnschrift.ttf", "size": 28, "color": "#ffffff", "align": "left"},
+    {"x": 316, "y": 46, "w": 150, "h": 18, "type": "value", "metric": "date", "unit": true, "font": "bahnschrift.ttf", "size": 12.5, "color": "#c8a090", "align": "left"},
+    {"x": 316, "y": 72, "w": 44, "h": 20, "type": "label", "text": "CPU", "font": "bahnschrift.ttf", "size": 14, "color": "#c8a090", "align": "left"},
+    {"x": 356, "y": 72, "w": 50, "h": 20, "type": "value", "metric": "cpu_usage", "unit": true, "font": "bahnschrift.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 406, "y": 72, "w": 60, "h": 20, "type": "value", "metric": "cpu_temp", "unit": true, "font": "bahnschrift.ttf", "size": 14, "color": "#c8a090", "align": "right"},
+    {"x": 316, "y": 95, "w": 150, "h": 8, "type": "bar", "metric": "cpu_usage", "color": "#ff8a5c", "track": "#2e1612", "radius": 3},
+    {"x": 316, "y": 112, "w": 44, "h": 20, "type": "label", "text": "GPU", "font": "bahnschrift.ttf", "size": 14, "color": "#c8a090", "align": "left"},
+    {"x": 356, "y": 112, "w": 50, "h": 20, "type": "value", "metric": "gpu_usage", "unit": true, "font": "bahnschrift.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 406, "y": 112, "w": 60, "h": 20, "type": "value", "metric": "gpu_temp", "unit": true, "font": "bahnschrift.ttf", "size": 14, "color": "#c8a090", "align": "right"},
+    {"x": 316, "y": 135, "w": 150, "h": 8, "type": "bar", "metric": "gpu_usage", "color": "#ffc27a", "track": "#2e1612", "radius": 3},
+    {"x": 316, "y": 152, "w": 44, "h": 20, "type": "label", "text": "RAM", "font": "bahnschrift.ttf", "size": 14, "color": "#c8a090", "align": "left"},
+    {"x": 356, "y": 152, "w": 50, "h": 20, "type": "value", "metric": "ram_percent", "unit": true, "font": "bahnschrift.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 406, "y": 152, "w": 60, "h": 20, "type": "value", "metric": "ram_used", "unit": true, "font": "bahnschrift.ttf", "size": 14, "color": "#c8a090", "align": "right"},
+    {"x": 316, "y": 175, "w": 150, "h": 8, "type": "bar", "metric": "ram_percent", "color": "#e8d8c8", "track": "#2e1612", "radius": 3},
+    {"x": 316, "y": 192, "w": 44, "h": 20, "type": "label", "text": "DISK", "font": "bahnschrift.ttf", "size": 14, "color": "#c8a090", "align": "left"},
+    {"x": 356, "y": 192, "w": 50, "h": 20, "type": "value", "metric": "disk_percent", "unit": true, "font": "bahnschrift.ttf", "size": 14, "color": "#ffffff", "align": "right"},
+    {"x": 406, "y": 192, "w": 60, "h": 20, "type": "value", "metric": "disk_free", "unit": true, "font": "bahnschrift.ttf", "size": 14, "color": "#c8a090", "align": "right"},
+    {"x": 316, "y": 215, "w": 150, "h": 8, "type": "bar", "metric": "disk_percent", "color": "#c8887a", "track": "#2e1612", "radius": 3},
+    {"x": 316, "y": 228, "w": 60, "h": 20, "type": "label", "text": "FPS", "font": "bahnschrift.ttf", "size": 14, "color": "#c8a090", "align": "left"},
+    {"x": 316, "y": 242, "w": 150, "h": 64, "type": "value", "metric": "fps", "unit": false, "font": "bahnschrift.ttf", "size": 48, "color": "#ffffff", "align": "right"}
+  ]
+}
