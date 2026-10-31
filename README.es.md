@@ -18,8 +18,8 @@
 </div>
 
 > [!WARNING]
-> **Proyecto personal: úsalo bajo tu propio riesgo.** PulseLCD se hizo para el uso de su autor y se comparte tal cual, sin
-> garantías. Puede no funcionar con tu pantalla, y cualquier problema derivado de su uso es responsabilidad tuya.
+> **Proyecto personal, sin garantía.** Hice PulseLCD para mi propio uso y lo comparto por si a alguien más le sirve. Se ofrece tal cual, y
+> puede que no funcione con tu pantalla.
 >
 > **Beta.** Se ha probado en una sola pantalla (mira el [estado de las pruebas](#-estado-de-las-pruebas)).
 

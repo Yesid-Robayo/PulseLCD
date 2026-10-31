@@ -18,8 +18,8 @@
 </div>
 
 > [!WARNING]
-> **Personal project: use it at your own risk.** PulseLCD was made for its author's own use and is shared as is, with no
-> warranty. It may not work with your display, and any problem that comes from using it is your responsibility.
+> **Personal project, no warranty.** I made PulseLCD for my own use and I'm sharing it in case it's useful to someone else. It's offered
+> as is, and it may not work with your display.
 >
 > **Beta.** It has been tested on a single display (see the [test status](#-test-status)).
 
