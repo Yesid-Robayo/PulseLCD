@@ -13,7 +13,7 @@
 
 <br>
 
-<img src="docs/images/home.png" alt="Ventana principal de PulseLCD, con la pantalla en vivo junto a sus controles" width="720">
+<img src="docs/images/home-es.png" alt="Ventana principal de PulseLCD, con la pantalla en vivo junto a sus controles" width="720">
 
 </div>
 
@@ -67,8 +67,8 @@ app tiene que arreglarlos sola**, sin que tengas que tocar el cable.
 - **Español e inglés,** claro y oscuro.
 
 <div align="center">
-<img src="docs/images/themes.png" alt="Algunos de los temas incluidos" width="640">
-<img src="docs/images/editor.png" alt="Editor de temas con un anillo seleccionado y sus propiedades" width="430">
+<img src="docs/images/themes-es.png" alt="Algunos de los temas incluidos" width="640">
+<img src="docs/images/editor-es.png" alt="Editor de temas con un anillo seleccionado y sus propiedades" width="430">
 </div>
 
 ## 🛡️ Un panel que se cuida solo

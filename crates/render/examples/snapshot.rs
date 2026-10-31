@@ -1,9 +1,14 @@
 //! Guarda en PNG cómo se ve cada tema incluido, con datos de ejemplo. `snapshot <carpeta> [escala] [carpeta de un tema]`.
+//! Con `PULSELCD_LANG=english`, los textos de ejemplo salen en inglés.
 
 use pulse_render::{AlertView, BUILTIN, History, Scene, builtin_theme};
+use pulse_shared::i18n::{self, Language};
 use pulse_shared::metrics::{Metric, Readings};
 
 fn main() {
+    if std::env::var("PULSELCD_LANG").is_ok_and(|language| language == "english") {
+        i18n::set(Language::English);
+    }
     let folder = std::env::args().nth(1).unwrap_or_else(|| ".".into());
     let scale: u32 = std::env::args().nth(2).and_then(|s| s.parse().ok()).unwrap_or(2);
     if let Some(theme) = std::env::args().nth(3) {

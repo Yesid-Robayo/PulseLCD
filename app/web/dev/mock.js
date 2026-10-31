@@ -5,12 +5,13 @@
   const list = [theme("pulse", "Pulse", true), theme("signal", "Signal", true, true), theme("arcade", "Arcade", true), theme("tierra", "Tierra", false)];
   const n = (number) => ({ number });
   const x = (text) => ({ text });
+  const english = params.get("lang") === "english";
   const readings = {
     cpu_usage: n(23), cpu_temp: n(52), gpu_usage: n(68), gpu_temp: n(61), gpu_memory_used: n(7240), gpu_memory_percent: n(45),
     gpu_fan: n(38), gpu_clock: n(2.68), fps: n(144), ram_percent: n(49), ram_used: n(31), swap_percent: n(12), disk_percent: n(63),
     disk_used: n(1180), disk_free: n(680), net_down: n(4200000), net_up: n(380000), net_down_total: n(52e9), net_up_total: n(6e9),
-    ping: n(14), uptime: n(190800), time: x("10:36 AM"), date: x("31 oct 2026"), weekday: x("Sábado"), weather_temp: n(17),
-    weather_feels: n(15), weather_humidity: n(68), weather_text: x("Nublado"),
+    ping: n(14), uptime: n(190800), time: x("10:36 AM"), date: x(english ? "Oct 31, 2026" : "31 oct 2026"), weekday: x(english ? "Saturday" : "Sábado"), weather_temp: n(17),
+    weather_feels: n(15), weather_humidity: n(68), weather_text: x(english ? "Cloudy" : "Nublado"),
   };
   const state = {
     version: "0.1.0",
@@ -32,7 +33,7 @@
       panel: { port: "auto", brightness: 53, flipped: true, theme: "pulse", off_when_idle: true },
       network: "auto", ping_host: "1.1.1.1",
       alerts: { cpu_temp: 90, gpu_temp: 85, battery: true, battery_url: "http://127.0.0.1:8765/v1/status" },
-      weather: { enabled: true, place: "Bogotá, Colombia", latitude: 4.6, longitude: -74.1, fahrenheit: false },
+      weather: { enabled: true, place: english ? "Bogota, Colombia" : "Bogotá, Colombia", latitude: 4.6, longitude: -74.1, fahrenheit: false },
       fps: { ignored: ["wallpaper64.exe", "obs64.exe"], count_generated: true },
       maintenance: { deghost_days: 7, last_deghost: 0 },
     },
