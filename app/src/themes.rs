@@ -126,7 +126,7 @@ pub fn save(id: &str, theme: &Theme) -> Result<(), String> {
 
 /// El fondo de un tema incluido vive dentro del exe: su copia necesita el suyo, salvo que ya traiga otro.
 fn copy_builtin_background(theme: &Theme, dir: &Path) -> Result<(), String> {
-    let Background::Image { file } = &theme.background else { return Ok(()) };
+    let Background::Image { file, .. } = &theme.background else { return Ok(()) };
     match builtin_image(file) {
         Some(image) if !dir.join(file).exists() => std::fs::write(dir.join(file), image).map_err(|e| e.to_string()),
         _ => Ok(()),
@@ -270,7 +270,7 @@ mod tests {
         let library = Library::new("no-image");
         for id in ["pulse", "orbit"] {
             let mut theme = builtin_theme(id).unwrap();
-            theme.background = Background::Image { file: "no-esta.png".into() };
+            theme.background = Background::image("no-esta.png");
             library.write(id, &serde_json::to_string(&theme).unwrap());
             assert!(scene_in(&library.0, id).is_ok(), "{id}");
         }

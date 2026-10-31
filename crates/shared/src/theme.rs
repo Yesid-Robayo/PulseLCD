@@ -8,6 +8,7 @@ use crate::metrics::Metric;
 pub const MAX_WIDGETS: usize = 96;
 pub const MAX_TEXT: usize = 64;
 pub const MAX_HISTORY: u16 = 240;
+pub const MAX_IMAGE_ZOOM: u16 = 400;
 
 /// Color `#rrggbb`.
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
@@ -69,10 +70,31 @@ pub enum Background {
         to: Color,
         angle: f32,
     },
-    /// Imagen dentro de la carpeta del tema.
+    /// Imagen dentro de la carpeta del tema. Cubre la pantalla, y lo que no cabe se recorta: `x` e `y` eligen qué parte se
+    /// ve, de 0 a 100, y `zoom` acerca la imagen, en porcentaje.
     Image {
         file: String,
+        #[serde(default = "centered")]
+        x: u8,
+        #[serde(default = "centered")]
+        y: u8,
+        #[serde(default = "no_zoom")]
+        zoom: u16,
     },
+}
+
+impl Background {
+    pub fn image(file: impl Into<String>) -> Self {
+        Self::Image { file: file.into(), x: centered(), y: centered(), zoom: no_zoom() }
+    }
+}
+
+fn centered() -> u8 {
+    50
+}
+
+fn no_zoom() -> u16 {
+    100
 }
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize, Deserialize, Default)]
@@ -241,7 +263,7 @@ impl Theme {
                 _ => {}
             }
         }
-        if let Background::Image { file } = &self.background
+        if let Background::Image { file, .. } = &self.background
             && !is_plain_file_name(file)
         {
             return Err(format!("imagen no válida: {file}"));
@@ -273,6 +295,12 @@ pub fn is_plain_file_name(name: &str) -> bool {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn a_theme_saved_before_framing_existed_stays_centered() {
+        let text = r#"{ "kind": "image", "file": "fondo.png" }"#;
+        assert_eq!(serde_json::from_str::<Background>(text).unwrap(), Background::image("fondo.png"));
+    }
 
     #[test]
     fn a_theme_cannot_name_a_device_as_a_file() {
@@ -329,7 +357,7 @@ mod tests {
     fn a_theme_cannot_reach_outside_its_folder() {
         assert!(theme(vec![label("..\\..\\secret.ttf")]).validate().is_err());
         let mut t = theme(vec![]);
-        t.background = Background::Image { file: "C:\\Windows\\win.ini".into() };
+        t.background = Background::image("C:\\Windows\\win.ini");
         assert!(t.validate().is_err());
     }
 

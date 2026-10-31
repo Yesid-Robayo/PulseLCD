@@ -369,6 +369,18 @@ class Editor {
     return h("label.field", label, input);
   }
 
+  // se ve al arrastrar: cada movimiento vuelve a encuadrar la vista previa
+  slider(widget, key, label, min, max) {
+    const paint = () => input.style.setProperty("--fill", `${((widget[key] - min) / (max - min)) * 100}%`);
+    const input = h("input", {
+      type: "range", min, max, value: widget[key],
+      onpointerdown: () => this.remember(),
+      oninput: () => { widget[key] = Number(input.value); paint(); this.dirty = true; this.refresh(); },
+    });
+    paint();
+    return this.field(label, input);
+  }
+
   // el archivo guarda enteros en la mayoría de campos: un decimal aquí haría fallar el tema al guardarlo
   number(widget, key, label, min, max, decimals = false) {
     const input = h("input", {
@@ -451,7 +463,7 @@ class Editor {
     const pickImage = async () => {
       const picked = await post(`theme/pick?id=${encodeURIComponent(this.id)}&kind=image`).catch((e) => { toast(e.message); return {}; });
       if (picked.file) {
-        this.change(() => { this.theme.background = { kind: "image", file: picked.file }; });
+        this.change(() => { this.theme.background = { kind: "image", file: picked.file, x: 50, y: 50, zoom: 100 }; });
         this.drawProperties();
       }
     };
@@ -461,7 +473,13 @@ class Editor {
     const rows = [h("h2", t("background")), h("div.field", kinds)];
     if (b.kind === "color") rows.push(this.color(b, "color", t("bgColor")));
     if (b.kind === "gradient") rows.push(this.color(b, "from", t("from")), this.color(b, "to", t("to")), this.number(b, "angle", t("angle"), 0, 360));
-    if (b.kind === "image") rows.push(h("p.muted.small", b.file), h("button.btn.small", { onclick: pickImage }, t("chooseImage")));
+    if (b.kind === "image") {
+      rows.push(h("p.muted.small", b.file), h("button.btn.small", { onclick: pickImage }, t("chooseImage")),
+        h("h2", t("framing")),
+        this.slider(b, "x", t("frameX"), 0, 100),
+        this.slider(b, "y", t("frameY"), 0, 100),
+        this.slider(b, "zoom", t("frameZoom"), 100, 400));
+    }
     return rows;
   }
 

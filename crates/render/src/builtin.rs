@@ -90,7 +90,7 @@ mod tests {
     #[test]
     fn every_builtin_background_is_inside_the_app() {
         for id in BUILTIN {
-            if let Background::Image { file } = builtin_theme(id).unwrap().background {
+            if let Background::Image { file, .. } = builtin_theme(id).unwrap().background {
                 assert!(builtin_image(&file).is_some(), "{id}: falta {file}");
             }
         }
@@ -100,7 +100,7 @@ mod tests {
     fn no_image_is_left_unused() {
         for (file, _) in IMAGES {
             let used = BUILTIN.iter().any(
-                |id| matches!(builtin_theme(id).unwrap().background, Background::Image { file: used } if used == file),
+                |id| matches!(builtin_theme(id).unwrap().background, Background::Image { file: used, .. } if used == file),
             );
             assert!(used, "{file}");
         }

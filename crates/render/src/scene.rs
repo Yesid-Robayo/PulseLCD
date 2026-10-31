@@ -6,7 +6,7 @@ use std::path::{Path, PathBuf};
 use image::imageops::FilterType;
 use pulse_panel::Frame;
 use pulse_shared::metrics::{Metric, Readings};
-use pulse_shared::theme::{Background, Bounds, Color, Kind, MAX_HISTORY, Orientation, Theme, Widget};
+use pulse_shared::theme::{Background, Bounds, Color, Kind, MAX_HISTORY, MAX_IMAGE_ZOOM, Orientation, Theme, Widget};
 
 use crate::alerts::{self, AlertView};
 use crate::builtin::builtin_image;
@@ -17,6 +17,14 @@ use crate::text::Fonts;
 /// Una imagen mayor no aporta nada en un panel de 480×320 y solo gasta memoria al decodificarla.
 const MAX_IMAGE_BYTES: u64 = 32 * 1024 * 1024;
 const MAX_IMAGE_SIDE: u32 = 8192;
+
+/// Qué parte de una imagen se ve cuando no cabe entera.
+#[derive(Debug, Clone, Copy)]
+struct Framing {
+    x: u8,
+    y: u8,
+    zoom: u16,
+}
 
 pub struct Scene {
     theme: Theme,
@@ -36,14 +44,17 @@ fn draw_background(theme: &Theme, folder: Option<&Path>) -> Result<Canvas, Strin
             Ok(base)
         }
         // un tema incluido editado no copia su fondo: mientras no se cambie, sale del exe
-        Background::Image { file } => match folder.map(|f| f.join(file)).filter(|path| path.is_file()) {
-            Some(path) => cover(&path, w, h),
-            None => {
-                let bytes = builtin_image(file).ok_or("no se encuentra la imagen del tema")?;
-                let reader = image::ImageReader::new(Cursor::new(bytes));
-                fit(reader.with_guessed_format().map_err(|e| e.to_string())?, w, h)
+        Background::Image { file, x, y, zoom } => {
+            let framing = Framing { x: *x, y: *y, zoom: *zoom };
+            match folder.map(|f| f.join(file)).filter(|path| path.is_file()) {
+                Some(path) => cover(&path, w, h, framing),
+                None => {
+                    let bytes = builtin_image(file).ok_or("no se encuentra la imagen del tema")?;
+                    let reader = image::ImageReader::new(Cursor::new(bytes));
+                    fit(reader.with_guessed_format().map_err(|e| e.to_string())?, w, h, framing)
+                }
             }
-        },
+        }
     }
 }
 
@@ -121,7 +132,7 @@ impl Scene {
 }
 
 /// Escala una imagen para cubrir la pantalla sin deformarla, recortando lo que sobra.
-fn cover(path: &Path, w: u16, h: u16) -> Result<Canvas, String> {
+fn cover(path: &Path, w: u16, h: u16, framing: Framing) -> Result<Canvas, String> {
     let size = std::fs::metadata(path).map_err(|e| e.to_string())?.len();
     if size > MAX_IMAGE_BYTES {
         return Err("la imagen es demasiado grande".into());
@@ -130,10 +141,16 @@ fn cover(path: &Path, w: u16, h: u16) -> Result<Canvas, String> {
         image::ImageReader::open(path).map_err(|e| e.to_string())?.with_guessed_format().map_err(|e| e.to_string())?,
         w,
         h,
+        framing,
     )
 }
 
-fn fit<R: BufRead + Seek>(mut reader: image::ImageReader<R>, w: u16, h: u16) -> Result<Canvas, String> {
+fn fit<R: BufRead + Seek>(
+    mut reader: image::ImageReader<R>,
+    w: u16,
+    h: u16,
+    framing: Framing,
+) -> Result<Canvas, String> {
     let mut limits = image::Limits::default();
     limits.max_image_width = Some(MAX_IMAGE_SIDE);
     limits.max_image_height = Some(MAX_IMAGE_SIDE);
@@ -141,7 +158,7 @@ fn fit<R: BufRead + Seek>(mut reader: image::ImageReader<R>, w: u16, h: u16) -> 
     let picture = reader.decode().map_err(|e| e.to_string())?.into_rgb8();
     let (iw, ih) = picture.dimensions();
     let (tw, th) = (w as u32, h as u32);
-    if (iw, ih) == (tw, th) {
+    if (iw, ih) == (tw, th) && framing.zoom <= 100 {
         return Ok(Canvas::from_rgb(w, h, picture.as_raw()));
     }
     // primero se recorta a la proporción de la pantalla y luego se escala: al revés, una imagen de 1×8192 pediría
@@ -151,7 +168,11 @@ fn fit<R: BufRead + Seek>(mut reader: image::ImageReader<R>, w: u16, h: u16) -> 
     } else {
         (iw, (iw as u64 * th as u64 / tw as u64).max(1) as u32)
     };
-    let cropped = image::imageops::crop_imm(&picture, (iw - cw) / 2, (ih - ch) / 2, cw, ch).to_image();
+    let zoom = framing.zoom.clamp(100, MAX_IMAGE_ZOOM) as u64;
+    let (cw, ch) = ((cw as u64 * 100 / zoom).max(1) as u32, (ch as u64 * 100 / zoom).max(1) as u32);
+    let shift = |room: u32, percent: u8| (room as u64 * percent.min(100) as u64 / 100) as u32;
+    let cropped =
+        image::imageops::crop_imm(&picture, shift(iw - cw, framing.x), shift(ih - ch, framing.y), cw, ch).to_image();
     let scaled = image::imageops::resize(&cropped, tw, th, FilterType::Lanczos3);
     Ok(Canvas::from_rgb(w, h, scaled.as_raw()))
 }
@@ -236,6 +257,8 @@ fn graph(c: &mut Canvas, b: Bounds, metric: Metric, color: Color, count: usize, 
 mod tests {
     use super::*;
     use crate::builtin::{BUILTIN, builtin_theme};
+
+    const CENTERED: Framing = Framing { x: 50, y: 50, zoom: 100 };
     use pulse_shared::metrics::Value;
     use pulse_shared::theme::{TextStyle, Theme};
 
@@ -321,7 +344,7 @@ mod tests {
     #[test]
     fn an_image_theme_without_a_folder_is_refused() {
         let mut t = theme(vec![]);
-        t.background = Background::Image { file: "fondo.png".into() };
+        t.background = Background::image("fondo.png");
         assert!(Scene::new(t, None).is_err());
     }
 
@@ -339,10 +362,39 @@ mod tests {
                 },
             );
         picture.save(&path).unwrap();
-        let c = cover(&path, 480, 320).unwrap();
+        let c = cover(&path, 480, 320, CENTERED).unwrap();
         assert_eq!((c.width, c.height), (480, 320));
         assert!(c.pixel(10, 100)[0] > 200, "izquierda roja");
         assert!(c.pixel(470, 100)[2] > 200, "derecha azul");
+        let left = cover(&path, 480, 320, Framing { x: 0, ..CENTERED }).unwrap();
+        assert!(left.pixel(470, 100)[0] > 200, "encuadrada a la izquierda solo se ve el rojo");
+        let right = cover(&path, 480, 320, Framing { x: 100, ..CENTERED }).unwrap();
+        assert!(right.pixel(10, 100)[2] > 200, "encuadrada a la derecha solo se ve el azul");
+    }
+
+    #[test]
+    fn zooming_shows_a_smaller_part_of_the_image() {
+        let dir = std::env::temp_dir().join("pulselcd-render-test");
+        std::fs::create_dir_all(&dir).unwrap();
+        let path = dir.join("cuadros.png");
+        let picture =
+            image::RgbImage::from_fn(480, 320, |x, _| image::Rgb(if x < 120 { [255, 0, 0] } else { [0, 255, 0] }));
+        picture.save(&path).unwrap();
+        assert!(cover(&path, 480, 320, CENTERED).unwrap().pixel(5, 100)[0] > 200);
+        let near = cover(&path, 480, 320, Framing { zoom: 200, ..CENTERED }).unwrap();
+        assert!(near.pixel(5, 100)[1] > 200, "con zoom, el borde rojo queda fuera");
+    }
+
+    #[test]
+    fn framing_values_out_of_range_cannot_break_the_crop() {
+        let dir = std::env::temp_dir().join("pulselcd-render-test");
+        std::fs::create_dir_all(&dir).unwrap();
+        let path = dir.join("limites.png");
+        image::RgbImage::new(64, 64).save(&path).unwrap();
+        for framing in [Framing { x: 255, y: 255, zoom: 65535 }, Framing { x: 0, y: 0, zoom: 0 }] {
+            let c = cover(&path, 480, 320, framing).unwrap();
+            assert_eq!((c.width, c.height), (480, 320));
+        }
     }
 
     #[test]
@@ -352,7 +404,7 @@ mod tests {
         for (name, size) in [("alta.png", (1, 8192)), ("ancha.png", (8192, 1))] {
             let path = dir.join(name);
             image::RgbImage::new(size.0, size.1).save(&path).unwrap();
-            let c = cover(&path, 480, 320).unwrap();
+            let c = cover(&path, 480, 320, CENTERED).unwrap();
             assert_eq!((c.width, c.height), (480, 320));
         }
     }

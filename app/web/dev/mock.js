@@ -56,7 +56,11 @@
     if (path.includes("/api/state")) return json(state);
     if (path.includes("/api/themes/hidden")) return json(Array.from({ length: +(params.get("hidden") ?? 0) }, (_, i) => theme(["pulse", "signal", "arcade"][i % 3], `Tema ${i + 1}`, true)));
     if (path.includes("/api/themes")) return json(list);
-    if (path.includes("/api/theme?")) return real("/shots-theme.json");
+    if (path.includes("/api/theme?")) {
+      const saved = await (await real("/shots-theme.json")).json();
+      if (params.has("bgimage")) saved.background = { kind: "image", file: "fondo.png", x: 30, y: 50, zoom: 150 };
+      return json(saved);
+    }
     if (path.includes("/api/fonts")) return json(fonts);
     if (path.includes("/api/places")) return json([{ name: "Bogotá", admin1: "Bogotá D.C.", country: "Colombia", latitude: 4.6, longitude: -74.08 }]);
     if (path.includes("/api/programs")) return json(programs);
