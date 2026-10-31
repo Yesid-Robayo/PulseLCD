@@ -3,7 +3,7 @@ resolver = "3"
 members = ["crates/shared", "crates/panel", "crates/render", "crates/sensors", "app", "broker"]
 
 [workspace.package]
-version = "0.1.0"
+version = "0.1.1"
 edition = "2024"
 license = "MIT"
 authors = ["Yesid Robayo"]

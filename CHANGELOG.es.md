@@ -7,6 +7,11 @@ notas en inglés y español y su SHA256 en [Releases](https://github.com/Yesid-R
 
 Cuando sale una versión nueva, se añade arriba con el mismo contenido que sus notas.
 
+## 0.1.1
+
+- **Encuadra tu imagen de fondo.** Con una imagen de fondo, el editor de temas añade **Horizontal**, **Vertical** y **Zoom** en **Fondo**,
+  para elegir qué parte se ve. El resultado aparece mientras los mueves, y los temas que ya tienes siguen centrados.
+
 ## 0.1.0
 
 Primera versión. Es gratis, está en beta y se ofrece tal cual, **sin garantía**. Es **solo para la Turing Smart Screen de 3,5"** (480×320,

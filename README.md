@@ -125,7 +125,8 @@ Windows 11 already has what it needs. On Windows 10 you may need the
   touching the ones you have.
 - **In the editor** drag elements, pull their handles to resize and use the guides to align them. Hold **Shift** to move freely,
   use the arrow keys for fine moves (with **Shift**, 10 pixels), **Ctrl+Z** to undo, **Ctrl+D** to duplicate and **Delete** to
-  remove. Turn on **Real data** to preview with your PC's values.
+  remove. Turn on **Real data** to preview with your PC's values. With an image as the background, **Horizontal**, **Vertical** and
+  **Zoom** choose which part of it is shown.
 - **Closing the window doesn't stop the display.** PulseLCD stays in the tray; quit from there or from Settings.
 
 ## 🌡️ Sensors

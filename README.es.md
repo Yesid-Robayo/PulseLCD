@@ -124,7 +124,8 @@ Windows 11 ya trae lo necesario. En Windows 10 puede hacer falta el
   que tengas.
 - **En el editor** arrastra los elementos, tira de sus asas para cambiar el tamaño y usa las guías para alinearlos. Mantén **Mayús**
   para moverlos libremente, usa las flechas para ajustes finos (con **Mayús**, 10 píxeles), **Ctrl+Z** para deshacer, **Ctrl+D** para
-  duplicar y **Supr** para quitar. Activa **Datos reales** para ver la vista previa con los valores de tu PC.
+  duplicar y **Supr** para quitar. Activa **Datos reales** para ver la vista previa con los valores de tu PC. Con una imagen de fondo,
+  **Horizontal**, **Vertical** y **Zoom** eligen qué parte se ve.
 - **Cerrar la ventana no detiene la pantalla.** PulseLCD sigue en la bandeja; sal desde ahí o desde Ajustes.
 
 ## 🌡️ Sensores

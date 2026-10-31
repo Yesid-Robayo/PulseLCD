@@ -1678,7 +1678,7 @@ dependencies = [
 
 [[package]]
 name = "pulse-panel"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "pulse-shared",
  "windows-sys 0.61.2",
@@ -1686,7 +1686,7 @@ dependencies = [
 
 [[package]]
 name = "pulse-render"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "ab_glyph",
  "image",
@@ -1697,7 +1697,7 @@ dependencies = [
 
 [[package]]
 name = "pulse-sensors"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "pulse-shared",
  "serde",
@@ -1707,7 +1707,7 @@ dependencies = [
 
 [[package]]
 name = "pulse-shared"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "serde",
  "serde_json",
@@ -1716,7 +1716,7 @@ dependencies = [
 
 [[package]]
 name = "pulselcd"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "embed-resource",
  "pulse-panel",
@@ -1732,7 +1732,7 @@ dependencies = [
 
 [[package]]
 name = "pulselcd-sensors"
-version = "0.1.0"
+version = "0.1.1"
 dependencies = [
  "pulse-shared",
  "windows-sys 0.61.2",

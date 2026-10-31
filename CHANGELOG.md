@@ -7,6 +7,12 @@ Spanish and their SHA256 in [Releases](https://github.com/Yesid-Robayo/PulseLCD/
 
 When a new version is published, it's added at the top with the same content as its release notes.
 
+## 0.1.1
+
+- **Frame your background image.** With an image as the background, the theme editor adds **Horizontal**, **Vertical** and **Zoom**
+  under **Background**, so you choose which part of it is shown. You see the result as you move them, and the themes you already have
+  stay centred.
+
 ## 0.1.0
 
 First version. It's free, in beta and offered as is, **with no warranty**. It's **only for the Turing Smart Screen 3.5"** (480×320,
