@@ -112,12 +112,18 @@ button, input, select { font: inherit; color: inherit; }
 .dot.bad { background: var(--bad); }
 @keyframes beat { 50% { opacity: 0; transform: scale(2.4); } }
 
+/* la misma barra en toda la ventana: el borde transparente la deja bien sobre cualquier fondo */
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track, ::-webkit-scrollbar-corner { background: transparent; }
+::-webkit-scrollbar-thumb { border: 3px solid transparent; border-radius: 8px; background: var(--surface-3) padding-box; }
+::-webkit-scrollbar-thumb:hover { background: var(--faint) padding-box; }
+
 /* ---- páginas ---- */
 #page { height: 100vh; overflow: auto; padding: 26px 30px 30px; }
-#page::-webkit-scrollbar { width: 11px; }
-#page::-webkit-scrollbar-thumb { background: var(--surface-3); border: 3px solid var(--bg); border-radius: 8px; }
 
-.head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; margin-bottom: 20px; }
+.head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 12px 16px; margin-bottom: 20px; }
+.head > div:first-child { flex: 1 1 300px; min-width: 0; }
+.head .row { flex-wrap: wrap; }
 .head p { margin-top: 3px; color: var(--muted); }
 .stack { display: flex; flex-direction: column; gap: 14px; }
 .row { display: flex; align-items: center; gap: 10px; }

@@ -53,7 +53,7 @@
     const path = String(url);
     if (!path.includes("/api/")) return real(url, options);
     if (path.includes("/api/state")) return json(state);
-    if (path.includes("/api/themes/hidden")) return json(params.has("hidden") ? [theme("pulse", "Mars", true), theme("signal", "Reef", true), theme("arcade", "Block Island", true)] : []);
+    if (path.includes("/api/themes/hidden")) return json(Array.from({ length: +(params.get("hidden") ?? 0) }, (_, i) => theme(["pulse", "signal", "arcade"][i % 3], `Tema ${i + 1}`, true)));
     if (path.includes("/api/themes")) return json(list);
     if (path.includes("/api/theme?")) return real("/shots-theme.json");
     if (path.includes("/api/fonts")) return json(fonts);
