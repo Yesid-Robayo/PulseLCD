@@ -11,7 +11,6 @@
 mod agent;
 mod autostart;
 mod icon;
-mod power;
 mod programs;
 mod themes;
 mod tray;

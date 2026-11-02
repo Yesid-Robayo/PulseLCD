@@ -21,7 +21,7 @@ use wry::http::{Method, Response, StatusCode, header};
 use super::bridge::Bridge;
 use super::dialogs::pick_file;
 use crate::autostart::Elevated;
-use crate::{autostart, power, programs, themes, updates};
+use crate::{autostart, programs, themes, updates};
 
 const KOFI: &str = "https://ko-fi.com/yesidrobayo";
 const REPOSITORY: &str = "https://github.com/Yesid-Robayo/PulseLCD";
@@ -244,7 +244,6 @@ impl Api {
             "helper_outdated": helper.installed && !helper.in_place,
             "fps_tool": autostart::fps_tool(),
             "pawnio": pawnio_installed(),
-            "fast_startup": power::fast_startup_on(),
             "theme_needs_weather": needs_weather,
         }))
     }
@@ -393,10 +392,6 @@ impl Api {
             }
             "pawnio" => {
                 open_external(PAWNIO_PAGE);
-                None
-            }
-            "power_options" => {
-                power::open_power_options();
                 None
             }
             "releases" => {

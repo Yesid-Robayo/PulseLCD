@@ -108,19 +108,6 @@ export function helperDialog(removing) {
         : h("button.btn.primary", { onclick: run }, t("helperInstall")))));
 }
 
-// la app no lo cambia: explica el motivo y abre la página de Windows donde se quita
-function fastStartupDialog() {
-  dialog(h("div.dialog",
-    h("h2", t("fastStartupHowTitle")),
-    h("p", t("fastStartupWhy")),
-    h("h3", t("fastStartupSteps")),
-    h("ol", ["fastStartupStep1", "fastStartupStep2", "fastStartupStep3", "fastStartupStep4"].map((key) => h("li", t(key)))),
-    h("p.small", t("fastStartupSafe")),
-    h("div.actions",
-      h("button.btn", { onclick: closeDialog }, t("close")),
-      h("button.btn.primary", { onclick: () => action("power_options") }, t("fastStartupOpen")))));
-}
-
 // al arrancar el PC tarda unos segundos en responder: solo se avisa si sigue callado
 const HELPER_GRACE_MS = 30000;
 let helperSilentSince = null;
@@ -135,11 +122,6 @@ function helperIsDown(s) {
 function notices() {
   const s = app.state;
   const list = [];
-  if (s.fast_startup && !s.config.hide_fast_startup_notice) {
-    list.push(h("div.notice", icon("warn"), h("div.grow", h("b", t("fastStartupTitle")), h("span", t("fastStartupNote"))),
-      h("button.btn.primary", { onclick: fastStartupDialog }, t("fastStartupHow")),
-      h("button.btn.small.icon", { title: t("fastStartupHide"), onclick: () => setConfig((c) => { c.hide_fast_startup_notice = true; }) }, icon("close"))));
-  }
   if (app.newVersion) {
     list.push(h("div.notice.info", icon("update"), h("div.grow", h("b", t("updateTitle", { version: app.newVersion })), h("span", t("updateNote", { version: s.version }))),
       h("button.btn", { onclick: () => action("releases") }, t("updateGet"))));
@@ -618,20 +600,12 @@ function helperRow(state) {
     : h("button.btn.primary.small", { onclick: () => helperDialog(false) }, t("helperEnable")));
 }
 
-function fastStartupRow(state) {
-  return setting(t("fastStartup"), t(state.fast_startup ? "fastStartupOnNote" : "fastStartupOffNote"), state.fast_startup
-    ? h("button.btn", { onclick: fastStartupDialog }, t("fastStartupHow"))
-    : h("span.chip.good", icon("check"), t("fastStartupOff")));
-}
-
 function settingsPage() {
   const s = app.state;
   const c = s.config;
   const helperKey = (state) => `${state.helper}${state.helper_outdated}`;
   let shownHelper = helperKey(s);
   const helper = h("div.setting-wrap", helperRow(s));
-  let shownFastStartup = s.fast_startup;
-  const fastStartup = h("div.setting-wrap", fastStartupRow(s));
   const port = h("select", { onchange: () => setConfig((x) => { x.panel.port = port.value; }) },
     h("option", { value: "auto" }, t("auto")),
     s.ports.map((p) => h("option", { value: p.name }, p.name)));
@@ -660,8 +634,7 @@ function settingsPage() {
       h("div.card", h("h2", t("panel")),
         setting(t("portChoice"), null, port),
         setting(t("flip"), t("flipNote"), toggle(c.panel.flipped, (on) => setConfig((x) => { x.panel.flipped = on; }))),
-        setting(t("offIdle"), t("offIdleNote"), toggle(c.panel.off_when_idle, (on) => setConfig((x) => { x.panel.off_when_idle = on; }))),
-        fastStartup),
+        setting(t("offIdle"), t("offIdleNote"), toggle(c.panel.off_when_idle, (on) => setConfig((x) => { x.panel.off_when_idle = on; })))),
       h("div.card", h("h2", t("network")),
         setting(t("interface"), null, network),
         setting(t("pingHost"), null, ping)),
@@ -680,10 +653,6 @@ function settingsPage() {
       if (helperKey(state) !== shownHelper) {
         shownHelper = helperKey(state);
         helper.replaceChildren(helperRow(state));
-      }
-      if (state.fast_startup !== shownFastStartup) {
-        shownFastStartup = state.fast_startup;
-        fastStartup.replaceChildren(fastStartupRow(state));
       }
     },
   };

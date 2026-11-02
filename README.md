@@ -27,9 +27,6 @@
 > **Only for the Turing Smart Screen 3.5" (480×320, first revision).** It's the only display PulseLCD has been tested on and the only
 > one it detects. To check yours, look in Device Manager: its hardware ID must contain `VID_1A86&PID_5722`. If you have another size or
 > model, this app isn't for you: don't download it.
->
-> **Turn off Windows Fast Startup.** With it on, the display can stay black when you power on the PC. PulseLCD warns you if it's on
-> and shows you the steps. [Why it matters](#-faq).
 
 PulseLCD drives those small USB screens sold for PC cases and desks. It shows your CPU, GPU, memory, FPS and more, with themes
 you can edit by dragging things around. It was written from scratch with one obsession: **these panels misbehave, so the app
@@ -89,8 +86,8 @@ This panel can't answer anything: it never confirms a command. So PulseLCD was b
   vanish from USB until you unplug it.
 
 > [!NOTE]
-> If the panel's LCD itself hangs (black with the backlight on), software can't help: only cutting its power does. It's rare,
-> and the [FAQ](#-faq) explains how to avoid it.
+> If the panel's LCD itself hangs (black with the backlight on), software can't help: only cutting its power does. The
+> [FAQ](#-faq) has what's known about it so far.
 
 ## 🧪 Test status
 
@@ -151,10 +148,9 @@ what gets installed: its files in `C:\Program Files\PulseLCD` and one scheduled 
 <summary><b>The screen went black with the backlight on</b></summary>
 
 The panel's LCD hung. Its microcontroller is still alive, so brightness responds, but nothing is drawn. **Unplug it and plug it
-back in.** On the test machine this happened with Windows Fast Startup on, which keeps the USB port powered overnight: 21 of 63
-hybrid boots failed against 0 of 21 full boots. Most full boots were restarts, so that's a strong hint, not proof. Turn off Fast
-Startup: PulseLCD shows the steps, under Settings if you hid the notice. Sleep and hibernate keep working. If it still happens, enable
-ErP / Deep Sleep in your BIOS.
+back in.** PulseLCD can't detect it: the panel keeps taking every frame at its normal speed, so it looks healthy. On the test
+machine it happens on about half of the power-ons after the PC has been off for hours, with Windows Fast Startup on or off, and it
+hasn't happened after short breaks. The cause isn't known yet. If you find something that prevents it, please open an issue.
 </details>
 
 <details>

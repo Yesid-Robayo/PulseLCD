@@ -110,8 +110,6 @@ pub struct Config {
     pub welcomed: bool,
     /// Temas incluidos que el usuario quitó. Siguen en el exe: vaciar esta lista los devuelve.
     pub hidden_themes: Vec<String>,
-    /// El usuario no quiere ver más el aviso del Inicio rápido de Windows.
-    pub hide_fast_startup_notice: bool,
     pub panel: PanelConfig,
     /// `auto` o el nombre de una interfaz de red.
     pub network: String,
@@ -133,7 +131,6 @@ impl Default for Config {
             check_updates: false,
             welcomed: false,
             hidden_themes: Vec::new(),
-            hide_fast_startup_notice: false,
             panel: PanelConfig::default(),
             network: "auto".into(),
             ping_host: "1.1.1.1".into(),

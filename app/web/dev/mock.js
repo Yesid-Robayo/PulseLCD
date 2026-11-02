@@ -1,4 +1,4 @@
-// Sustituye al servidor: responde a /api/ con datos de ejemplo. Parámetros: ?page=themes&theme=light&lang=english&click=Elegir&update=0.2.0&fast=1&noweather=1
+// Sustituye al servidor: responde a /api/ con datos de ejemplo. Parámetros: ?page=themes&theme=light&lang=english&click=Elegir&update=0.2.0&noweather=1
 (() => {
   const params = new URLSearchParams(location.search);
   const theme = (id, name, builtin, edited = false) => ({ id, name, builtin, edited });
@@ -21,7 +21,6 @@
     helper_outdated: params.get("outdated") === "1",
     fps_tool: params.get("tool") ?? "amd_driver",
     pawnio: true,
-    fast_startup: params.get("fast") === "1",
     theme_needs_weather: params.get("noweather") === "1",
     status: {
       state: params.get("state") ?? "healthy", port: "COM5", readings: { values: readings }, cpu_temp: params.get("helper") === "0" ? "needs_helper" : "ok",

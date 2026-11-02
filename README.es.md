@@ -27,9 +27,6 @@
 > **Solo para la Turing Smart Screen de 3,5" (480×320, primera revisión).** Es la única pantalla en la que se ha probado PulseLCD y la
 > única que detecta. Para comprobar la tuya, mira en el Administrador de dispositivos: su identificador debe incluir `VID_1A86&PID_5722`.
 > Si tienes otro tamaño u otro modelo, esta app no es para ti: no la descargues.
->
-> **Desactiva el Inicio rápido de Windows.** Con él activo, la pantalla puede quedarse en negro al encender el PC. PulseLCD te avisa si
-> está activado y te muestra los pasos. [Por qué importa](#-preguntas-frecuentes).
 
 PulseLCD maneja esas pantallas USB pequeñas que se venden para cajas de PC y escritorios. Muestra tu CPU, GPU, memoria, FPS y más,
 con temas que puedes editar arrastrando cosas. Se escribió desde cero con una obsesión: **estos paneles se portan mal, así que la
@@ -89,8 +86,8 @@ Este panel no puede responder nada: nunca confirma una orden. Por eso PulseLCD s
   puede hacerlo desaparecer del USB hasta desconectarlo.
 
 > [!NOTE]
-> Si se cuelga la propia LCD del panel (negra con la luz encendida), el software no puede ayudar: solo cortarle la energía. Es poco
-> frecuente, y las [preguntas frecuentes](#-preguntas-frecuentes) explican cómo evitarlo.
+> Si se cuelga la propia LCD del panel (negra con la luz encendida), el software no puede ayudar: solo cortarle la energía. En las
+> [preguntas frecuentes](#-preguntas-frecuentes) está lo que se sabe hasta ahora.
 
 ## 🧪 Estado de las pruebas
 
@@ -149,10 +146,9 @@ exactamente qué se instala: sus archivos en `C:\Program Files\PulseLCD` y una t
 <summary><b>La pantalla quedó negra con la luz encendida</b></summary>
 
 Se colgó la LCD del panel. Su microcontrolador sigue vivo, por eso el brillo responde, pero no se dibuja nada. **Desconéctala y
-vuelve a conectarla.** En el equipo de pruebas esto pasaba con el Inicio rápido de Windows activo, que deja el USB alimentado toda la
-noche: fallaron 21 de 63 arranques híbridos frente a 0 de 21 completos. Casi todos los completos fueron reinicios, así que es un indicio
-fuerte, no una prueba. Desactiva el Inicio rápido: PulseLCD te muestra los pasos, en Ajustes si ocultaste el aviso. Suspender e hibernar
-siguen funcionando. Si aun así te pasa, activa ErP / Deep Sleep en tu BIOS.
+vuelve a conectarla.** PulseLCD no puede detectarlo: el panel sigue recibiendo cada cuadro a su velocidad normal, así que parece sano.
+En el equipo de pruebas pasa en más o menos la mitad de los encendidos tras horas con el PC apagado, con el Inicio rápido de Windows
+activo o no, y no ha pasado tras pausas cortas. Aún no se sabe la causa. Si encuentras algo que lo evite, abre un issue.
 </details>
 
 <details>

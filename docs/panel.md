@@ -54,8 +54,11 @@ parser probably restarts on each USB packet.
 
 - **Blue stripes with no USB drop:** seen once after a hybrid boot, with widgets fine and the date sheared inside its box. It couldn't be
   reproduced. A single later repaint cleaned it at once, which is why repaints exist.
-- **Black screen with the backlight on:** the LCD hangs. Only cutting the power recovers it. On the test machine 21 of 63 hybrid boots
-  failed against 0 of 21 full boots, but most full boots were restarts, so that's a hint, not proof.
+- **Black screen with the backlight on:** the LCD hangs. Only cutting the power recovers it, and frames still take their normal time,
+  so software can't see it. It follows long power-offs, not the boot type: counting a manual repair within the first hour as a failure,
+  22 of 44 power-ons after 5 h or more off failed, and 0 of 4 under 2.3 h. With Windows Fast Startup off the USB port loses power
+  overnight, and it still failed. An earlier count, 21 of 63 hybrid boots against 0 of 21 full ones, was wrong: the full boots were
+  restarts.
 
 ## Español
 
@@ -109,5 +112,8 @@ así que el parser real probablemente reinicia con cada paquete USB.
 
 - **Franjas azules sin caída del USB:** se vio una vez tras un arranque híbrido, con los widgets bien y la fecha cizallada dentro de su caja.
   No se pudo reproducir. Un solo repintado posterior lo limpió al instante, y por eso existen los repintados.
-- **Pantalla negra con la luz encendida:** se cuelga la LCD. Solo cortar la energía la recupera. En el equipo de pruebas fallaron 21 de 63
-  arranques híbridos frente a 0 de 21 completos, pero casi todos los completos fueron reinicios, así que es un indicio, no una prueba.
+- **Pantalla negra con la luz encendida:** se cuelga la LCD. Solo cortar la energía la recupera, y los cuadros siguen tardando lo normal,
+  así que el software no puede verlo. Depende de cuánto tiempo estuvo apagado el PC, no del tipo de arranque: contando como fallo una
+  reparación manual en la primera hora, fallaron 22 de 44 encendidos tras 5 h o más apagado, y 0 de 4 con menos de 2,3 h. Con el Inicio
+  rápido de Windows desactivado el puerto USB se queda sin corriente por la noche, y aun así falló. Una cuenta anterior, 21 de 63 arranques
+  híbridos frente a 0 de 21 completos, estaba mal: los completos eran reinicios.
