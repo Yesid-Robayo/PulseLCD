@@ -66,7 +66,7 @@ Each release has its `SHA256SUMS.txt` and a build provenance attestation, which 
 workflow:
 
 ```powershell
-gh attestation verify PulseLCD-0.1.1.zip --repo Yesid-Robayo/PulseLCD
+gh attestation verify PulseLCD-0.1.2.zip --repo Yesid-Robayo/PulseLCD
 ```
 
 ## Español
@@ -134,5 +134,5 @@ Cada versión trae su `SHA256SUMS.txt` y una atestación de origen, que demuestr
 de GitHub:
 
 ```powershell
-gh attestation verify PulseLCD-0.1.1.zip --repo Yesid-Robayo/PulseLCD
+gh attestation verify PulseLCD-0.1.2.zip --repo Yesid-Robayo/PulseLCD
 ```

@@ -7,6 +7,13 @@ notas en inglés y español y su SHA256 en [Releases](https://github.com/Yesid-R
 
 Cuando sale una versión nueva, se añade arriba con el mismo contenido que sus notas.
 
+## 0.1.2
+
+- **Ya no sale el aviso del Inicio rápido de Windows.** Decía que el Inicio rápido dejaba la pantalla en negro al encender, pero
+  desactivarlo no sirvió: la pantalla siguió quedándose negra. Si lo desactivaste por el aviso, puedes volver a activarlo.
+- **La pantalla negra al encender se sigue probando.** Aún no se sabe la causa. El equipo de pruebas vuelve a usar el Inicio rápido
+  activado para comparar, y en las preguntas frecuentes del README está lo que se sabe hasta ahora.
+
 ## 0.1.1
 
 - **Encuadra tu imagen de fondo.** Con una imagen de fondo, el editor de temas añade **Horizontal**, **Vertical** y **Zoom** en **Fondo**,

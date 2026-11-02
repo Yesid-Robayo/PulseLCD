@@ -12,7 +12,7 @@ body:
     attributes:
       label: Versión de PulseLCD / PulseLCD version
       description: Sale en Ajustes › Acerca de. / Shown in Settings › About.
-      placeholder: "0.1.1"
+      placeholder: "0.1.2"
     validations:
       required: true
   - type: input

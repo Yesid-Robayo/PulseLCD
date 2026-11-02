@@ -14,7 +14,7 @@
     weather_feels: n(15), weather_humidity: n(68), weather_text: x(english ? "Cloudy" : "Nublado"),
   };
   const state = {
-    version: "0.1.1",
+    version: "0.1.2",
     connected: params.get("agent") !== "0",
     frame: 1,
     helper: params.get("helper") !== "0",

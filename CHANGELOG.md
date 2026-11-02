@@ -7,6 +7,13 @@ Spanish and their SHA256 in [Releases](https://github.com/Yesid-Robayo/PulseLCD/
 
 When a new version is published, it's added at the top with the same content as its release notes.
 
+## 0.1.2
+
+- **The Windows Fast Startup notice is gone.** It said Fast Startup made the display stay black at power-on, but turning it off
+  didn't help: the display still went black. If you turned it off because of the notice, you can turn it back on.
+- **The black screen at power-on is still being tested.** Its cause isn't known yet. The test machine now runs with Fast Startup on
+  again to compare, and the FAQ in the README has what is known so far.
+
 ## 0.1.1
 
 - **Frame your background image.** With an image as the background, the theme editor adds **Horizontal**, **Vertical** and **Zoom**
